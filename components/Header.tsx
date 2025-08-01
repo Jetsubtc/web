@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Settings } from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
 
 interface HeaderProps {
   currentSection: string
@@ -11,10 +11,17 @@ interface HeaderProps {
 export default function Header({ currentSection }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
+      
+      // Calculate scroll progress
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = (scrollTop / docHeight) * 100
+      setScrollProgress(Math.min(progress, 100))
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -90,17 +97,72 @@ export default function Header({ currentSection }: HeaderProps) {
             ))}
           </nav>
 
-                                {/* Menu Button */}
+                                {/* Scroll Progress Indicator */}
                       <div className="hidden md:flex items-center space-x-4">
-                        <motion.button
-                          whileHover={{ y: -1 }}
-                          whileTap={{ scale: 0.98 }}
-                          onClick={() => window.location.reload()}
-                          className="flex items-center space-x-2 px-4 py-2 bg-slate-800/50 border border-slate-700/50 rounded-lg text-white hover:bg-slate-700/50 transition-colors duration-200"
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          className="flex items-center space-x-3"
                         >
-                          <Settings size={16} />
-                          <span className="text-sm font-medium">Menu</span>
-                        </motion.button>
+                          {/* Scroll Progress Circle */}
+                          <div className="relative w-12 h-12">
+                            <svg className="w-12 h-12 transform -rotate-90" viewBox="0 0 48 48">
+                              {/* Background circle */}
+                              <circle
+                                cx="24"
+                                cy="24"
+                                r="20"
+                                stroke="rgba(255,255,255,0.1)"
+                                strokeWidth="3"
+                                fill="none"
+                              />
+                              {/* Progress circle */}
+                              <motion.circle
+                                cx="24"
+                                cy="24"
+                                r="20"
+                                stroke="url(#gradient)"
+                                strokeWidth="3"
+                                fill="none"
+                                strokeLinecap="round"
+                                initial={{ strokeDasharray: "0 126" }}
+                                animate={{ strokeDasharray: `${(scrollProgress / 100) * 126} 126` }}
+                                transition={{ duration: 0.3 }}
+                              />
+                              {/* Gradient definition */}
+                              <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                  <stop offset="0%" stopColor="#3B82F6" />
+                                  <stop offset="100%" stopColor="#8B5CF6" />
+                                </linearGradient>
+                              </defs>
+                            </svg>
+                            {/* Center text */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <motion.div
+                                animate={{ scale: scrollProgress > 0 ? 1.1 : 1 }}
+                                transition={{ duration: 0.2 }}
+                                className="text-xs font-bold text-white"
+                              >
+                                {Math.round(scrollProgress)}%
+                              </motion.div>
+                            </div>
+                          </div>
+                          
+                          {/* Scroll indicator text */}
+                          <motion.div
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            className="text-xs text-white/60 font-medium"
+                          >
+                            <motion.div
+                              animate={{ y: scrollProgress > 50 ? -2 : 0 }}
+                              transition={{ duration: 0.3 }}
+                            >
+                              {scrollProgress > 50 ? 'Almost there!' : 'Keep scrolling'}
+                            </motion.div>
+                          </motion.div>
+                        </motion.div>
                       </div>
 
           {/* Enhanced Mobile Menu Button */}
@@ -141,16 +203,52 @@ export default function Header({ currentSection }: HeaderProps) {
                     {item.name}
                   </motion.button>
                 ))}
-                <motion.button
+                {/* Mobile Scroll Progress */}
+                <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.6 }}
-                  onClick={() => window.location.reload()}
-                  className="btn-primary w-full flex items-center justify-center space-x-2 mt-4"
+                  className="flex items-center justify-center space-x-3 mt-4 p-3 bg-white/10 rounded-lg"
                 >
-                  <Settings size={18} />
-                  <span>Menu</span>
-                </motion.button>
+                  <div className="relative w-8 h-8">
+                    <svg className="w-8 h-8 transform -rotate-90" viewBox="0 0 32 32">
+                      <circle
+                        cx="16"
+                        cy="16"
+                        r="12"
+                        stroke="rgba(255,255,255,0.1)"
+                        strokeWidth="2"
+                        fill="none"
+                      />
+                      <motion.circle
+                        cx="16"
+                        cy="16"
+                        r="12"
+                        stroke="url(#mobileGradient)"
+                        strokeWidth="2"
+                        fill="none"
+                        strokeLinecap="round"
+                        initial={{ strokeDasharray: "0 75" }}
+                        animate={{ strokeDasharray: `${(scrollProgress / 100) * 75} 75` }}
+                        transition={{ duration: 0.3 }}
+                      />
+                      <defs>
+                        <linearGradient id="mobileGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#3B82F6" />
+                          <stop offset="100%" stopColor="#8B5CF6" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-xs font-bold text-white">
+                        {Math.round(scrollProgress)}%
+                      </span>
+                    </div>
+                  </div>
+                  <span className="text-xs text-white/80">
+                    {scrollProgress > 50 ? 'Almost there!' : 'Keep scrolling'}
+                  </span>
+                </motion.div>
               </nav>
             </motion.div>
           )}
