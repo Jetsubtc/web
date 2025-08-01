@@ -11,7 +11,7 @@ const faqData = [
   },
   {
     question: 'How do I buy Axie Cord NFTs?',
-    answer: 'To buy Axie Cord NFTs, you need to connect your Web3 wallet (like MetaMask) to our platform. Browse our collection, select the NFT you want, and complete the purchase using ETH or other supported cryptocurrencies. All transactions are secure and transparent on the blockchain.'
+    answer: 'To buy Axie Cord NFTs, you need to connect your Web3 wallet to our platform. Browse our collection, select the NFT you want, and complete the purchase using Hyperliquid tokens. All transactions are secure and transparent on the Hyperliquid blockchain.'
   },
   {
     question: 'What makes Axie Cord NFTs special?',
@@ -31,7 +31,7 @@ const faqData = [
   },
   {
     question: 'What blockchain are Axie Cord NFTs built on?',
-    answer: 'Axie Cord NFTs are built on Ethereum, with plans to expand to other blockchains like Polygon and BSC for lower transaction fees. We use industry-standard ERC-721 and ERC-1155 token standards to ensure compatibility with major NFT marketplaces.'
+    answer: 'Axie Cord NFTs are built on Hyperliquid, a high-performance blockchain designed for fast, secure, and cost-effective transactions. Our platform leverages Hyperliquid\'s advanced infrastructure to provide seamless NFT trading and gaming experiences.'
   },
   {
     question: 'How can I verify the authenticity of an Axie Cord NFT?',
