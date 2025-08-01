@@ -125,7 +125,7 @@ export default function Hero({}: HeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9 }}
-            className="text-center mt-12"
+            className="text-center mt-16 mb-20"
           >
             <motion.div
               animate={{ scale: [1, 1.02, 1] }}
@@ -145,19 +145,17 @@ export default function Hero({}: HeroProps) {
             </div>
           </motion.div>
 
-
-
           {/* Enhanced Scroll Indicator */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
           >
             <motion.div
               animate={{ y: [0, -5, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="flex flex-col items-center space-y-2"
+              className="flex flex-col items-center space-y-3"
             >
               <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
                 <motion.div
