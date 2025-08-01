@@ -95,49 +95,79 @@ export default function Hero({}: HeroProps) {
             ))}
           </motion.div>
 
-          {/* Revenue Share Highlight */}
+          {/* Enhanced Revenue Share Highlight */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.8 }}
-            className="mt-8 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-xl p-6 max-w-2xl mx-auto"
+            className="mt-12 bg-gradient-to-r from-green-500/30 via-emerald-500/20 to-green-500/30 border border-green-500/40 rounded-2xl p-8 max-w-3xl mx-auto backdrop-blur-sm shadow-2xl"
           >
-            <div className="flex items-center justify-center space-x-3 mb-3">
-              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm">💰</span>
-              </div>
-              <h3 className="text-lg font-bold text-white">REVENUE SHARING</h3>
+            <div className="flex items-center justify-center space-x-4 mb-4">
+              <motion.div 
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center shadow-lg"
+              >
+                <span className="text-white font-bold text-lg">💰</span>
+              </motion.div>
+              <h3 className="text-2xl font-bold text-white tracking-wide">REVENUE SHARING</h3>
             </div>
-            <p className="text-sm text-white/90 text-center">
-              <span className="text-green-400 font-semibold">Direct revenue share</span> from platform earnings
+            <p className="text-lg text-white/95 text-center font-medium">
+              <span className="text-green-300 font-bold">Direct revenue share</span> from platform earnings
             </p>
+            <div className="mt-4 flex justify-center">
+              <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full"></div>
+            </div>
           </motion.div>
 
-          {/* Lore Tagline */}
+          {/* Enhanced Lore Tagline */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="text-center mt-8"
+            transition={{ delay: 0.9 }}
+            className="text-center mt-12"
           >
-            <p className="text-slate-500 text-sm font-medium italic">
-              "Will you pull the cord?"
-            </p>
-            <p className="text-slate-600 text-xs mt-2">
-              The line between fortune and failure is razor-thin in Cordia
-            </p>
+            <motion.div
+              animate={{ scale: [1, 1.02, 1] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="inline-block"
+            >
+              <p className="text-slate-300 text-lg font-semibold italic mb-3">
+                "Will you pull the cord?"
+              </p>
+            </motion.div>
+            <div className="flex items-center justify-center space-x-2">
+              <div className="w-1 h-1 bg-axie-400 rounded-full"></div>
+              <p className="text-slate-400 text-sm font-medium">
+                The line between fortune and failure is razor-thin in Cordia
+              </p>
+              <div className="w-1 h-1 bg-axie-400 rounded-full"></div>
+            </div>
           </motion.div>
 
 
 
-          {/* Professional Scroll Indicator */}
+          {/* Enhanced Scroll Indicator */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
             className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
           >
-            <div className="text-slate-500 text-sm">Scroll to explore</div>
+            <motion.div
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="flex flex-col items-center space-y-2"
+            >
+              <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+                <motion.div
+                  animate={{ y: [0, 12, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  className="w-1 h-3 bg-white/60 rounded-full mt-2"
+                />
+              </div>
+              <p className="text-white/70 text-sm font-medium">Scroll to explore</p>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>
