@@ -145,7 +145,7 @@ export default function Hero({}: HeroProps) {
             </div>
           </motion.div>
 
-          {/* Enhanced Scroll Indicator */}
+          {/* Animated Scroll Icon */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -155,7 +155,7 @@ export default function Hero({}: HeroProps) {
             <motion.div
               animate={{ y: [0, -5, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="flex flex-col items-center space-y-3"
+              className="flex items-center justify-center"
             >
               <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
                 <motion.div
@@ -164,7 +164,6 @@ export default function Hero({}: HeroProps) {
                   className="w-1 h-3 bg-white/60 rounded-full mt-2"
                 />
               </div>
-              <p className="text-white/70 text-sm font-medium">Scroll to explore</p>
             </motion.div>
           </motion.div>
         </motion.div>
