@@ -1,25 +1,10 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, Calendar } from 'lucide-react'
 
 interface HeroProps {}
 
 export default function Hero({}: HeroProps) {
-  const [isMinting, setIsMinting] = useState(false)
-  const [mintMessage, setMintMessage] = useState('')
-
-  const handleMint = () => {
-    setIsMinting(true)
-    setMintMessage('Mint in August 12')
-    
-    // Reset after 3 seconds
-    setTimeout(() => {
-      setIsMinting(false)
-      setMintMessage('')
-    }, 3000)
-  }
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20">
@@ -143,37 +128,7 @@ export default function Hero({}: HeroProps) {
             </p>
           </motion.div>
 
-          {/* Professional CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
-            className="flex justify-center items-center mt-8"
-          >
-            <motion.button
-              whileHover={{ y: -1 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={handleMint}
-              disabled={isMinting}
-              className={`flex items-center space-x-3 px-8 py-3 rounded-lg border transition-all duration-200 ${
-                isMinting 
-                  ? 'bg-slate-700 border-slate-600 text-slate-400 cursor-not-allowed' 
-                  : 'bg-axie-500 border-axie-500 text-white hover:bg-axie-600 hover:border-axie-600'
-              }`}
-            >
-              {isMinting ? (
-                <>
-                  <Calendar size={18} />
-                  <span className="text-sm font-medium">{mintMessage}</span>
-                </>
-              ) : (
-                <>
-                  <span className="text-sm font-medium">Connect Wallet</span>
-                  <ArrowRight size={18} />
-                </>
-              )}
-            </motion.button>
-          </motion.div>
+
 
           {/* Professional Scroll Indicator */}
           <motion.div
