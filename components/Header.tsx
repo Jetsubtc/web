@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, RefreshCw } from 'lucide-react'
+import { Menu, X, Settings } from 'lucide-react'
 
 interface HeaderProps {
   currentSection: string
@@ -98,7 +98,7 @@ export default function Header({ currentSection }: HeaderProps) {
                           onClick={() => window.location.reload()}
                           className="flex items-center space-x-2 px-4 py-2 bg-slate-800/50 border border-slate-700/50 rounded-lg text-white hover:bg-slate-700/50 transition-colors duration-200"
                         >
-                          <RefreshCw size={16} />
+                          <Settings size={16} />
                           <span className="text-sm font-medium">Menu</span>
                         </motion.button>
                       </div>
@@ -148,7 +148,7 @@ export default function Header({ currentSection }: HeaderProps) {
                   onClick={() => window.location.reload()}
                   className="btn-primary w-full flex items-center justify-center space-x-2 mt-4"
                 >
-                  <RefreshCw size={18} />
+                  <Settings size={18} />
                   <span>Menu</span>
                 </motion.button>
               </nav>
